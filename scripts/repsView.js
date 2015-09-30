@@ -170,10 +170,10 @@ function renderResults(response, rawResponse) {
     // it's online, not local.
     
     var locationId = document.getElementById('locationBlock');
-    if (!response || response.error || response.status !== 'success') {
-        locationId.innerHTML = '<div class = "alert alert-danger">Sorry, we were unable to locate information for the address entered. <a href = "index.html" class = "alert-link"><br>Try again?</a></div>';
-        return;
-    }
+    //if (!response || response.error || response.status !== 'success') {
+    //    locationId.innerHTML = '<div class = "alert alert-danger">Sorry, we were unable to locate information for the address entered. <a href = "index.html" class = "alert-link"><br>Try again?</a></div>';
+    //    return;
+    //}
 
     var inputObj = response.normalizedInput;
     var normalizedAddress = inputObj.line1 + ', ' + inputObj.city + ' ' +
@@ -235,7 +235,8 @@ function renderResults(response, rawResponse) {
             }
 
             var thisOffice = officeArr[k++];
-            var officeLevel = thisOffice.level;
+            var officeLevel;
+            if (thisOffice.levels) officeLevel = thisOffice.levels[0];
             var officeName = thisOffice.name;
 
             if (value.hasOwnProperty('name'))
@@ -273,6 +274,9 @@ function renderResults(response, rawResponse) {
                 case 'county' :
                     $("#county").append(repNode);
                     break;
+                case 'country' :
+                    $("#federal").append(repNode);
+                    break;
                 case 'federal' :
                     $("#federal").append(repNode);
                     break;
@@ -308,10 +312,9 @@ function parseUrl(str) {
 function lookup(address, callback) {
     //Request object
     var req = gapi.client.request({
-        'path': '/civicinfo/us_v1/representatives/lookup',
-        'method': 'POST',
-        'params': {'includeOffices': 'true'},
-        'body': {'address': address}
+        'path': 'https://www.googleapis.com/civicinfo/v2/representatives',
+        'method': 'GET',
+        'params': {'address': address}
     });
     // ^^ this request only runs if it's online, not local
 
