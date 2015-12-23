@@ -168,7 +168,7 @@ function writeRepNode(name, officeName, party, phone, site, photo, address) {
 function renderResults(response, rawResponse) {
     // apparently this function only runs if 
     // it's online, not local.
-    
+    // HI THERE!!!!
     var locationId = document.getElementById('locationBlock');
     //if (!response || response.error || response.status !== 'success') {
     //    locationId.innerHTML = '<div class = "alert alert-danger">Sorry, we were unable to locate information for the address entered. <a href = "index.html" class = "alert-link"><br>Try again?</a></div>';
