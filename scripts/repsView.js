@@ -173,8 +173,7 @@ function renderResults(response, rawResponse) {
     var locationId = document.getElementById('locationBlock');
     if (!response || response.error) {
         console.log("error with response");
-        locationId.appendChild(document.createTextNode(
-              'Error while trying to fetch polling place'));
+        locationId.innerHTML = formatLine("There was an error! Try again!");
         return;
     }
 
