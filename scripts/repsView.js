@@ -173,7 +173,7 @@ function renderResults(response, rawResponse) {
     var locationId = document.getElementById('locationBlock');
     if (!response || response.error) {
         console.log("error with response");
-        locationId.innerHTML = formatLine("There was an error! Try again!");
+        locationId.innerHTML = '<div class = "alert alert-danger">Sorry, we were unable to locate information for the address entered. <a href = "index.html" class = "alert-link"><br>Try again?</a></div>';
         return;
     }
 
