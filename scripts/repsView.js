@@ -173,7 +173,8 @@ function renderResults(response, rawResponse) {
     var locationId = document.getElementById('locationBlock');
     if (!response || response.error) {
         console.log("error with response");
-        locationId.innerHTML = '<div class = "alert alert-danger">Sorry, we were unable to locate information for the address entered. <a href = "index.html" class = "alert-link"><br>Try again?</a></div>';
+        locationId.appendChild(document.createTextNode(
+              'Error while trying to fetch polling place'));
         return;
     }
 
