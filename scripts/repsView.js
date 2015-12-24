@@ -169,7 +169,7 @@ function renderResults(response, rawResponse) {
     // apparently this function only runs if 
     // it's online, not local.
     var david = "david aarons";
-    console.log(response.status);
+    console.log(JSON.parse(response));
     var locationId = document.getElementById('locationBlock');
     if (response.status = 404) {
         console.log("error with response");
