@@ -172,7 +172,7 @@ function renderResults(response, rawResponse) {
     for()
     console.log(response);
     var locationId = document.getElementById('locationBlock');
-    if (response.status = 200) {
+    if (!response || response.error) {
         console.log("error with response");
         locationId.innerHTML = '<div class = "alert alert-danger">Sorry, we were unable to locate information for the address entered. <a href = "index.html" class = "alert-link"><br>Try again?</a></div>';
         return;
@@ -322,8 +322,7 @@ function lookup(address, callback) {
     // ^^ this request only runs if it's online, not local
 
     req.execute(callback);
-    console.log(callback);
-    console.log(address);
+    
 }
 /**
  * Initialize the Google Civic Information API client, and make a request.
