@@ -321,7 +321,8 @@ function lookup(address, callback) {
     // ^^ this request only runs if it's online, not local
 
     req.execute(callback);
-
+    console.log(callback);
+    console.log(address);
 }
 /**
  * Initialize the Google Civic Information API client, and make a request.
